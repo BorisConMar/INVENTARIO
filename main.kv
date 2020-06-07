@@ -1,0 +1,195 @@
+<MainWid>
+    canvas:
+        Color:
+            rgb : 1,1,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+<StartWid>:
+    orientation: 'vertical'
+    canvas:
+        Color:
+            rgb : 0.3,0.4,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        size_hint_y: 0.4
+    Button:
+        size_hint_y: 0.2
+        text: 'Conectar a la base de datos'
+        on_press: root.create_database()
+    BoxLayout:
+        size_hint_y: 0.4
+<DataWid>:
+    data: ''
+    data_id: ''
+    canvas:
+        Color:
+            rgb: 0.2, 0.2, 0.2
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        size_hint_x: 0.9
+        size_font: self.width*0.5
+        text: root.data
+    Button:
+        size_hint_x: 0.1
+        text: 'edit'
+        on_press: root.update_data(root.data_id)
+<NewDataButton>:
+    font_size: self.height*0.3
+    text: '+'
+    on_press: root.create_new_product()
+<DataBaseWid>:
+    canvas:
+        Color:
+            rgb : 0.3,0.4,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ScrollView:
+        size: self.size
+        GridLayout:
+            id: contenedor
+            padding: [10,10,10,10]
+            spacing: 4
+            size_hint_y: None
+            cols: 1
+            row_default_height: root.height*0.2
+            height: self.minimum_height
+<LeftLabel@Label>:
+    text_size: self.size
+    halign: 'left'
+<MessagePopup>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: message
+            size_hint: 1, 0.8
+            text: ''
+        Button:
+            size_hint: 1, 0.8
+            text: 'regresar'
+            on_press: root.dismiss()
+<InsertDataWid>:
+    orientation: 'vertical'
+    canvas:
+        Color:
+            rgb : 0.3,0.4,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    LeftLabel: #-------  ID
+        text: "ID:"
+    TextInput:
+        id: ti_id
+        multiline: False
+        hint_text: 'Numero id'
+    LeftLabel: #-------  ID
+        text: "Nombre:"
+    TextInput:
+        id: ti_nombre
+        multiline: False
+        hint_text: 'Nombre'
+    LeftLabel: #-------  ID
+        text: "Color:"
+    TextInput:
+        id: ti_color
+        multiline: False
+        hint_text: 'Color'
+    LeftLabel: #-------  ID
+        text: "Talla:"
+    TextInput:
+        id: ti_talla
+        multiline: False
+        hint_text: 'Talla'
+    LeftLabel: #-------  ID
+        text: "Costo:"
+    TextInput:
+        id: ti_costo
+        multiline: False
+        hint_text: 'Costo'
+    LeftLabel: #-------  ID
+        text: "Almacen:"
+    TextInput:
+        id: ti_almacen
+        multiline: False
+        hint_text: 'almacen'
+    LeftLabel: #-------  ID
+        text: "Estado:"
+    TextInput:
+        id: ti_estado
+        multiline: False
+        hint_text: 'Estado'
+    BoxLayout:
+        size_hint_y: 4
+    BoxLayout:
+        Button:
+            text: 'crear'
+            on_press: root.insert_data()
+        Button:
+            text: 'Salir'
+            on_press: root.back_to_dbw()
+
+<UpdateDataWid>:
+    orientation: 'vertical'
+    data_id: ''
+    canvas:
+        Color:
+            rgb : 0.3,0.4,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    LeftLabel: #-------  ID
+        text: "ID:"+ root.data_id
+    LeftLabel: #-------  ID
+        text: "Nombre:"
+    TextInput:
+        id: ti_nombre
+        multiline: False
+        hint_text: 'Nombre'
+    LeftLabel: #-------  ID
+        text: "Color:"
+    TextInput:
+        id: ti_color
+        multiline: False
+        hint_text: 'Color'
+    LeftLabel: #-------  ID
+        text: "Talla:"
+    TextInput:
+        id: ti_talla
+        multiline: False
+        hint_text: 'Talla'
+    LeftLabel: #-------  ID
+        text: "Costo: Bs."
+    TextInput:
+        id: ti_costo
+        multiline: False
+        hint_text: 'Costo'
+    LeftLabel: #-------  ID
+        text: "Almacen:"
+    TextInput:
+        id: ti_almacen
+        multiline: False
+        hint_text: 'almacen'
+    LeftLabel: #-------  ID
+        text: "Estado:"
+    TextInput:
+        id: ti_estado
+        multiline: False
+        hint_text: 'Estado'
+    BoxLayout:
+        size_hint_y: 4
+    BoxLayout:
+        Button:
+            text: 'Actualizar'
+            on_press: root.update_data()
+        Button:
+            text: 'Eliminiar'
+            on_press: root.delete_data()
+    BoxLayout:
+        Button:
+            text: 'Salir'
+            on_press: root.back_to_dbw()
